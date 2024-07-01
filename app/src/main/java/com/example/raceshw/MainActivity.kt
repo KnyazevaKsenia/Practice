@@ -34,8 +34,9 @@ class MainActivity : AppCompatActivity()
             binding.startButton.setOnClickListener(){
                 if (binding.amountOfCarsEntry.text!=null)
                 {
-                    var amount:Int=binding.amountOfCarsEntry.text.toInt()
-                    val raceManager=RaceManager(amount)
+                    val amount:String= binding.amountOfCarsEntry.text.toString()
+                    val intAmount=amount.toInt()
+                    val raceManager=RaceManager(intAmount)
                     raceManager.StartRace()
                 }
 
@@ -81,7 +82,7 @@ class Pickup(mark: Marks, model: Int, year: Int, horsePowers:Int, val liflingCap
 )
 {}
 
-class Minivan(mark: Marks, model: Int, year: Int, color: String, horsePowers:Int, val enginePower:Int): Car(
+class Minivan(mark: Marks, model: Int, year: Int, horsePowers:Int, val enginePower:Int): Car(
     mark=mark,
     year=year,
     horsePowers=horsePowers
