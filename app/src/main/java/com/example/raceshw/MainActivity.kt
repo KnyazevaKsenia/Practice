@@ -14,19 +14,19 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity()
 {
-    private var button:Button?= null
-    private var text: TextView?=null
     private var viewBinding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(viewBinding?.root)
         viewBinding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding?.root)
         initViews()
     }
+
     override fun onDestroy() {
         super.onDestroy()
+        viewBinding=null
     }
     private fun initViews()
     {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity()
                     val amount:String= binding.amountOfCarsEntry.text.toString()
                     val intAmount=amount.toInt()
                     val raceManager=RaceManager(intAmount)
-                    raceManager.StartRace()
+                    raceManager.startRace()
                 }
 
             }
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity()
 }
 
 public enum class Marks{
-    Porshe,
     Audi,
     BMW,
     Mercedes
@@ -66,7 +65,7 @@ class Jeep(mark: Marks, model: Int, year: Int, horsePowers:Int, val wheelWidth:I
     year=year,
     horsePowers=horsePowers
 )
-{}
+
 
 class Crossover(mark: Marks, model: Int, year: Int, horsePowers:Int,  val driveUnit:String): Car(
     mark=mark,
@@ -80,7 +79,7 @@ class Pickup(mark: Marks, model: Int, year: Int, horsePowers:Int, val liflingCap
     year=year,
     horsePowers=horsePowers
 )
-{}
+
 
 class Minivan(mark: Marks, model: Int, year: Int, horsePowers:Int, val enginePower:Int): Car(
     mark=mark,
@@ -93,30 +92,30 @@ class RaceManager(private val amountOfCars: Int) {
     private var cars: Array<Car> = arrayOf()
     private val random = Random
 
-    fun CreateArray(amountOfCars: Int) {
-        cars = Array(amountOfCars) { CreateCar() }
+    private fun createArray(amountOfCars: Int) {
+        cars = Array(amountOfCars) { createCar() }
     }
 
-    fun CreateCar(): Car {
-        val mark = Marks.values()[random.nextInt(Marks.values().size)]
+    private fun createCar(): Car {
+        val mark = Marks.entries[random.nextInt(Marks.entries.size)]
         val horsePowers = random.nextInt(200, 250)
         val year = random.nextInt(2000, 2024)
         return Car(mark, year, horsePowers)
     }
 
-    fun GetCarPower(car: Car): Int {
+    private fun getCarPower(car: Car): Int {
         return car.year + car.horsePowers * 15
     }
 
-    fun GetWnner(car1: Car, car2: Car): Car {
-        return if (GetCarPower(car1) < GetCarPower(car2)) {
+    private fun getWinner(car1: Car, car2: Car): Car {
+        return if (getCarPower(car1) < getCarPower(car2)) {
             car2
         } else {
             car1
         }
     }
 
-    fun MakeRace() {
+    private fun makeRace() {
         var winners: Array<Car>
         if (cars.size % 2 == 0) {
             winners = Array(cars.size / 2) { Car(Marks.BMW, 0, 0) }
@@ -126,7 +125,7 @@ class RaceManager(private val amountOfCars: Int) {
         }
 
         for (i in 0 until cars.size - 1 step 2) {
-            val winner = GetWnner(cars[i], cars[i + 1])
+            val winner = getWinner(cars[i], cars[i + 1])
             winners[i / 2] = winner
             println("${cars[i].mark}${cars[i].year} VS ${cars[i + 1].mark}${cars[i + 1].year} : ${winner.mark} ${winner.year}")
         }
@@ -134,7 +133,7 @@ class RaceManager(private val amountOfCars: Int) {
         cars = winners
     }
 
-    fun PrintResults() {
+    private fun printResults() {
         when (cars.size) {
             amountOfCars -> print("Members: ")
             1 -> print("Winner: ")
@@ -146,12 +145,12 @@ class RaceManager(private val amountOfCars: Int) {
         println()
     }
 
-    fun StartRace() {
-        CreateArray(amountOfCars)
-        PrintResults()
+    fun startRace() {
+        createArray(amountOfCars)
+        printResults()
         while (cars.size != 1) {
-            MakeRace()
-            PrintResults()
+            makeRace()
+            printResults()
         }
     }
 }

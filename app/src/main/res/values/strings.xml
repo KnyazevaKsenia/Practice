@@ -2,5 +2,6 @@
     <string name="app_name">RacesHW</string>
     <string name="start_race">Start race</string>
     <string name="races">Races</string>
-    <string name="amount_of_cars">Amount of cars</string>
+    <string name="amount_of_cars">amount of cars</string>
+
 </resources>
