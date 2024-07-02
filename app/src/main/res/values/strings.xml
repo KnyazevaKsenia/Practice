@@ -14,4 +14,7 @@
     <string name="type_massage">type massage</string>
     <string name="send">Send</string>
     <string name="warning">"Для/отправки/текста требуется заполнить поле"</string>
+    <string name="subjects">Subjects</string>
+    <string name="math">Math</string>
+    <string name="science_about_numbers_and_figures">Science about numbers and figures</string>
 </resources>
