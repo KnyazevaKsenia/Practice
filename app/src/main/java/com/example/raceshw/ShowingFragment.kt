@@ -15,6 +15,10 @@ class ShowingFragment : Fragment(R.layout.fragment_showing) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentShowingBinding.bind(view)
+        var arg=arguments?.getString("Message")
+        binding?.run{
+            message.text=arg
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
