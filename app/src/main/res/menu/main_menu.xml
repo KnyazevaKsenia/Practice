@@ -18,8 +18,7 @@
         android:title="@string/entry"/>
     <item
         android:id="@+id/infoFragment"
-        android:icon="@drawable/info"
+        android:icon="@drawable/baseline_info_24"
         android:title="@string/info"/>
-
 
 </menu>

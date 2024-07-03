@@ -1,19 +1,41 @@
 package com.example.raceshw
 
+import SubjectAdapter
+import SubjectRepozitory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.raceshw.databinding.FragmentInfoBinding
 
 
 class InfoFragment : Fragment(R.layout.fragment_info) {
-    var binding:FragmentInfoBinding?=null
+
+    private var binding:FragmentInfoBinding?=null
+    private var adapter: SubjectAdapter? = null
+
+    private fun initAdapter() {
+        binding?.run {
+            adapter = SubjectAdapter(
+                list = SubjectRepozitory.subjects,
+                glide = Glide.with(this@InfoFragment),
+                onClick = {
+                    findNavController().navigate(resId = R.id.action_infoFragment_to_subjectFragment,
+                        SubjectFragment.bundle(it))
+                })
+
+            rvSubject.adapter = adapter
+            rvSubject.layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentInfoBinding.bind(view)
+        initAdapter()
     }
     override fun onDestroy() {
         super.onDestroy()

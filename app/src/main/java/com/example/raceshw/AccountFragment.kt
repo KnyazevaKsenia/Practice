@@ -10,7 +10,7 @@ import com.example.raceshw.databinding.FragmentInfoBinding
 
 
 class AccountFragment : Fragment(R.layout.fragment_account) {
-    var binding:FragmentAccountBinding?=null
+    private var binding:FragmentAccountBinding?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

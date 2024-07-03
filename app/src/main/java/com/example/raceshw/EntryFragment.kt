@@ -1,19 +1,16 @@
 package com.example.raceshw
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.raceshw.databinding.FragmentAccountBinding
 import com.example.raceshw.databinding.FragmentEntryBinding
 import com.google.android.material.snackbar.Snackbar
 
 
 class EntryFragment : Fragment(R.layout.fragment_entry) {
-    var binding:FragmentEntryBinding?=null
+    private var binding:FragmentEntryBinding?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
