@@ -12,5 +12,7 @@ class SubjectHolder(
             binding.subName.text=subject.Name
             binding.discription.text=subject.Info
         }
+
+
     }
 }

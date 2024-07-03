@@ -1,7 +1,5 @@
 package com.example.raceshw
 
-import android.graphics.drawable.Icon
-import java.net.URL
 
 data class Subject (
     val id:Int,

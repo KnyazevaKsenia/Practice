@@ -45,7 +45,7 @@
         <ImageView
             android:id="@+id/subIcon"
             android:layout_width="0dp"
-            android:src="@drawable/account"
+            tools:src="@drawable/account"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="8:8"
             app:layout_constraintEnd_toEndOf="parent"

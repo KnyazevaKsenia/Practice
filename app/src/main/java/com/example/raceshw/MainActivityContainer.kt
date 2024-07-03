@@ -1,7 +1,6 @@
 package com.example.raceshw
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -10,7 +9,7 @@ import com.example.raceshw.databinding.ActivityMainFragmentBinding
 
 
 @Suppress("DEPRECATION")
-class MainFragmentActivity : AppCompatActivity() {
+class MainActivityContainer : AppCompatActivity() {
     private var binding: ActivityMainFragmentBinding?=null
     private var controller: NavController? = null
 
@@ -24,23 +23,10 @@ class MainFragmentActivity : AppCompatActivity() {
 
         controller?.let{navController->
             binding?.navButtom?.setupWithNavController(navController)
-
-
         }
-
     }
-
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        controller?.navigateUp()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         binding=null
-
     }
-
-
 }
