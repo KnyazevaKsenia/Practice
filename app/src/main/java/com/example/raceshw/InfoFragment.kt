@@ -5,12 +5,14 @@ import SubjectRepozitory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.raceshw.databinding.FragmentInfoBinding
 
 
 class InfoFragment : Fragment(R.layout.fragment_info) {
+
     private var binding:FragmentInfoBinding?=null
     private var adapter: SubjectAdapter? = null
 
@@ -18,11 +20,13 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
         binding?.run {
             adapter = SubjectAdapter(
                 list = SubjectRepozitory.subjects,
-                glide = Glide.with(this@InfoFragment))
-
+                glide = Glide.with(this@InfoFragment),
+                onClick = {
+                    findNavController().navigate(resId = R.id.action_infoFragment_to_subjectFragment,
+                        SubjectFragment.bundle(it))
+                })
 
             rvSubject.adapter = adapter
-
             rvSubject.layoutManager = LinearLayoutManager(requireContext())
         }
     }

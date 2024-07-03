@@ -8,6 +8,7 @@ import com.example.raceshw.databinding.ItemSubjectBinding
 class SubjectAdapter(
     private val list:List<Subject>,
     private val glide: RequestManager,
+    private val onClick: (Int) -> Unit
 ):RecyclerView.Adapter<SubjectHolder>(
 
 ) {
@@ -19,11 +20,12 @@ class SubjectAdapter(
                 LayoutInflater.from(parent.context),parent,false
             ),
             glide=glide,
+            onClick=onClick
         )
     }
 
     override fun onBindViewHolder(holder: SubjectHolder, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(position)
     }
 
     override fun getItemCount(): Int =list.size

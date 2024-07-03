@@ -24,7 +24,11 @@
         android:id="@+id/infoFragment"
         android:name="com.example.raceshw.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_subjectFragment"
+            app:destination="@id/subjectFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.raceshw.SettingsFragment"
@@ -44,5 +48,13 @@
             android:id="@+id/action_showingFragment_to_entryFragment"
             app:destination="@id/entryFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.example.raceshw.SubjectFragment"
+        android:label="SubjectFragment" >
+        <action
+            android:id="@+id/action_subjectFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
 </navigation>
